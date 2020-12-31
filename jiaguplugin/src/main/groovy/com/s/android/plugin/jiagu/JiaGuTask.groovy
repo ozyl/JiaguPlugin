@@ -97,7 +97,7 @@ class JiaGuTask extends DefaultTask {
         if (jiaGuPluginExtension.jiaguEnable) {
             String name = uploadFile.name.substring(0, uploadFile.name.lastIndexOf(".")) +
                     "_" + mFirUploadEntity.versionName.replace(".", "") + "_jiagu_sign.apk"
-            File file = new File(jiaGuPluginExtension.outputFileDir + "\\" + name)
+            File file = new File(jiaGuPluginExtension.outputFileDir + "${File.separator}" + name)
 //            if (file.exists()) {
             uploadFile = file
 //            }
@@ -132,7 +132,7 @@ class JiaGuTask extends DefaultTask {
         if (jiaguDirFile == null || !jiaguDirFile.exists()) {
             throw new NullPointerException("jiaGuDir 不存在")
         }
-        def jiaguJarFile = new File("${jiaGuPluginExtension.jiaGuDir}\\jiagu.jar")
+        def jiaguJarFile = new File("${jiaGuPluginExtension.jiaGuDir}${File.separator}jiagu.jar")
         if (jiaguJarFile == null || !jiaguJarFile.exists()) {
             throw new NullPointerException("jiagu.jar 不存在")
         }

@@ -12,7 +12,7 @@ class JiaguUtils {
     static void jiagu(JiaGuPluginExtension jiaGuPluginExtension) {
         ProcessUtils.debug = debug
         commandExt = ""
-        commandJiaGu = "${jiaGuPluginExtension.jiaGuDir}\\java\\bin\\java -jar ${jiaGuPluginExtension.jiaGuDir}\\jiagu.jar "
+        commandJiaGu = "${jiaGuPluginExtension.jiaGuDir}${File.separator}java${File.separator}bin${File.separator}java -jar ${jiaGuPluginExtension.jiaGuDir}${File.separator}jiagu.jar "
         // 登录
         String result = login(jiaGuPluginExtension)
         if (result.contains("success")) {
