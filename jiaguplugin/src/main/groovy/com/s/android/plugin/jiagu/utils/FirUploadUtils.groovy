@@ -87,7 +87,7 @@ class FirUploadUtils {
             if (response.code() != 201) {
                 return
             }
-            Logger.debug("obtain upload credentials:success")
+            Logger.debug("obtain upload credentials:success $string")
             def parentJsonObject = new JsonParser().parse(string).asJsonObject
             JsonObject jsonObject = parentJsonObject.getAsJsonObject("cert")
             def binaryObject = jsonObject.getAsJsonObject("binary")
@@ -97,7 +97,10 @@ class FirUploadUtils {
             String release_id = firUploadApk(mFirUploadEntity, binaryObject.get("upload_url").asString, binaryObject.get("key").asString,
                     binaryObject.get("token").asString, jsonObject.get("prefix").asString)
             if (release_id != null) {
-                Logger.debug("download url : https://fir.im/${parentJsonObject.get("short").asString}?release_id=${release_id}")
+                def domain = mFirUploadEntity.downloadDomain == null ? "http://jappstore.com/" : mFirUploadEntity.downloadDomain
+                Logger.debug("Android-${mFirUploadEntity.versionCode}-v${mFirUploadEntity.versionName}")
+                Logger.debug("下载地址 :${domain}${parentJsonObject.get("short").asString}?release_id=${release_id}")
+                Logger.debug("更改日志 :${mFirUploadEntity.firChangeLog}")
             }
         } else {
             Logger.debug("Unable to obtain upload credentials. $response")

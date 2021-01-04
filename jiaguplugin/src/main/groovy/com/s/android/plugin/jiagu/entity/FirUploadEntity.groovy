@@ -5,6 +5,7 @@ class FirUploadEntity {
     String firBundleId = null // 默认获取applicationId
     String firApiToken = null // fir api token  必填
     String appName = null // App Name
+    String downloadDomain = null // App Name
     String firChangeLog = null // 更新日志
     File apkFile = null // apk fill
     File iconFile = null // icon fill
@@ -14,12 +15,14 @@ class FirUploadEntity {
     String iconName
     byte[] iconData
 
+
     @Override
-    String toString() {
+    public String toString() {
         return "FirUploadEntity{" +
                 "firBundleId='" + firBundleId + '\'' +
                 ", firApiToken='" + firApiToken + '\'' +
                 ", appName='" + appName + '\'' +
+                ", downloadDomain='" + downloadDomain + '\'' +
                 ", firChangeLog='" + firChangeLog + '\'' +
                 ", apkFile=" + apkFile +
                 ", iconFile=" + iconFile +
@@ -27,6 +30,6 @@ class FirUploadEntity {
                 ", versionName='" + versionName + '\'' +
                 ", iconName='" + iconName + '\'' +
                 ", iconData=" + Arrays.toString(iconData) +
-                '}'
+                '}';
     }
 }
