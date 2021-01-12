@@ -87,7 +87,7 @@ class FirUploadUtils {
             if (response.code() != 201) {
                 return
             }
-            Logger.debug("obtain upload credentials:success $string")
+            Logger.debug("obtain upload credentials:success")
             def parentJsonObject = new JsonParser().parse(string).asJsonObject
             JsonObject jsonObject = parentJsonObject.getAsJsonObject("cert")
             def binaryObject = jsonObject.getAsJsonObject("binary")
